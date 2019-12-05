@@ -16,5 +16,8 @@ export default {
 		link = link + '?offset=' + offset
     }
 	return Repository.get(link);
+  },
+  getSingle (id) {
+	return Repository.get('answer/' + id)
   }
 };
