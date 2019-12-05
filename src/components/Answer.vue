@@ -2,7 +2,7 @@
   <div class="answer">
 	{{ answer }}
 	<br>
-    <Comments :answerId="id" />
+    <Comments :answerId="answerId" />
   </div>
 </template>
 
@@ -12,7 +12,7 @@ const AnswerRepository = RepositoryFactory.get('answers')
 
 import Comments from './Answer/Comments.vue'
 export default {
-	props: ['id'],
+	props: ['answerId'],
 	data() {
 		return {
 			answer: {},
@@ -22,7 +22,7 @@ export default {
 	methods: {
 		async fetch () {
 			this.is_loading = true
-			this.answer = await AnswerRepository.getSingle(this.id).then(responce => {
+			this.answer = await AnswerRepository.getSingle(this.answerId).then(responce => {
 				return responce.data
 			})
 			this.is_loading = false
@@ -30,6 +30,11 @@ export default {
 	},
 	components: {
 		Comments
+	},
+	watch: {
+		answerId () {
+			this.fetch()
+		}
 	},
 	created() {
 		this.fetch()
