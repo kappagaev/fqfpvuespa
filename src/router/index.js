@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Profile from '../components/Profile.vue'
 import Answer from '../components/Answer.vue'
+import Tape from '../components/Tape.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: Answer,
     props: true 
+  },
+  {
+    path: '/tape',
+    name: 'tape',
+    component: Tape
   }
 ]
 

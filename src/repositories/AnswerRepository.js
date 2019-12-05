@@ -19,5 +19,9 @@ export default {
   },
   getSingle (id) {
 	return Repository.get('answer/' + id)
+  },
+  getTapeAnswers(identifier) {
+	var link = '/answer/tape?identifier=' +  identifier
+	return Repository.get(link);
   }
 };
