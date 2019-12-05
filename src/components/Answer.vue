@@ -1,12 +1,16 @@
 <template>
   <div class="answer">
-    this is a single answer 123
+    <Comments :answerId="id" />
   </div>
 </template>
 
 <script>
+import Comments from './Answer/Comments.vue'
 export default {
-  
+	props: ['id'],
+	components: {
+		Comments
+	},
 }
 </script>
 
