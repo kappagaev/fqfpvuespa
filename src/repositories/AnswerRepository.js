@@ -16,5 +16,9 @@ export default {
 		link = link + '?offset=' + offset
     }
 	return Repository.get(link);
-  }
+  },
+  getTapeAnswers(identifier) {
+	var link = '/answer/tape?identifier=' +  identifier
+	return Repository.get(link);
+  },
 };
