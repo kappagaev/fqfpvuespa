@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Profile from '../components/Profile.vue'
 import Answer from '../components/Answer.vue'
 import Tape from '../components/Tape.vue'
+import i18n from '../i18n.js'
 
 Vue.use(VueRouter)
 
@@ -35,6 +36,17 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const lang = to.query.hl
+
+  if (!['en', 'ru'].includes(lang)) return next(to.path+'?hl=en')
+
+  if (i18n.locale !== lang) {
+    i18n.locale = lang
+  }
+  return next()
 })
 
 export default router
